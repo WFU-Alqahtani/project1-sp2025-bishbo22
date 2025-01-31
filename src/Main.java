@@ -4,11 +4,11 @@ import java.util.ArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Item[] store = setupStore();
-        ArrayList<Item> cart = new ArrayList<>();
-        cart = createCart(args,store);
-        printReceiptInOrder(cart);
-        emptyCartReverseOrder(cart);
+        Item[] store = setupStore(); //declares an item and assigns the returned item from setupStore() to an easy-to-use variable "store"
+        ArrayList<Item> cart; //declares cart as an array list to be used easily
+        cart = createCart(args,store); //initialize cart as the cart made in the createCart() method using args and the newly created store to do so
+        printReceiptInOrder(cart); //prints the receipt and its subtotal, sales tax, and total
+        emptyCartReverseOrder(cart); //prints every item being removed from the cart one at a time from the bottom to the top of the array list, only showing the name of the item being removed
     }
     public static Item[] setupStore() { //setup the store's items and prices
         Item[] store = new Item[5]; //declare the Item store
@@ -21,15 +21,13 @@ public class Main {
     }
     public static ArrayList<Item> createCart(String[] args,Item[] store) { //create the cart, an array list that can referenced in the other methods, taking in args and the store Item
         ArrayList<Item> Cart = new ArrayList<Item>(); //declare the cart to be used through the input of this method
-        for (int i = 0; i < args.length; i++){ //iterates over the indices of args
+        for (String arg : args) { //iterates over the indices of args
             try {
-                Cart.add(store[Integer.parseInt(args[i])]); //add the store item using the integer value from the args index at "i" to the cart
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("The store does not have an item of index " + args[i]); //catch the exception where the index value written is an incorrect value
-            }
-            catch (NumberFormatException e){
-                System.out.println("\"" + args[i] + "\"" + " is not a valid integer."); //catch the exception where there is no integer present, an incorrect format
+                Cart.add(store[Integer.parseInt(arg)]); //add the store item using the integer value from the args index at "i" to the cart
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("The store does not have an item of index " + arg); //catch the exception where the index value written is an incorrect value
+            } catch (NumberFormatException e) {
+                System.out.println("\"" + arg + "\"" + " is not a valid integer."); //catch the exception where there is no integer present, an incorrect format
             }
         }
         if (Cart.isEmpty()){
@@ -42,13 +40,13 @@ public class Main {
     public static void printReceiptInOrder(ArrayList<Item> cart){ //print the format of the receipt
         System.out.println("Receipt\n========================="); //title line printed
         System.out.printf("%-20s %-10s%n","Item","Price"); //using printf, correctly format the title of the table
-        for (int i = 0; i < cart.size(); i++) { //iterate across the different parts of the cart
-            System.out.printf("%-20s %-10s%n",cart.get(i).getItemName(),cart.get(i).getItemPrice()); //prints the item's name and price using the item-class methods getItemName and getItemPrice
+        for (Item item : cart) { //iterate across the different parts of the cart
+            System.out.printf("%-20s %-10s%n", item.getItemName(), item.getItemPrice()); //prints the item's name and price using the item-class methods getItemName and getItemPrice
         }
         System.out.println("========================="); //aesthetic line to match the example
         double subtotal = 0.0; //initialize and declare subtotal
-        for (int i = 0; i < cart.size(); i++){ //iterate across the cart to find the subtotal using all the prices of the cart
-            subtotal += cart.get(i).getItemPrice(); //uses getItemPrice from the item-class and add it to the subtotal
+        for (Item item : cart) { //iterate across the cart to find the subtotal using all the prices of the cart
+            subtotal += item.getItemPrice(); //uses getItemPrice from the item-class and add it to the subtotal
         }
         System.out.println("(a) Subtotal: " + subtotal); //print subtotal
         double salesTax = 0.05; //initialize and declare sales tax
