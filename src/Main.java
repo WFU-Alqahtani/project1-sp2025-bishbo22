@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList; //import array list class
 public class Main {
     public static void main(String[] args) {
         Item[] store = setupStore(); //declares an item and assigns the returned item from setupStore() to an easy-to-use variable "store"
@@ -11,7 +8,7 @@ public class Main {
         emptyCartReverseOrder(cart); //prints every item being removed from the cart one at a time from the bottom to the top of the array list, only showing the name of the item being removed
     }
     public static Item[] setupStore() { //setup the store's items and prices
-        Item[] store = new Item[5]; //declare the Item store
+        Item[] store = new Item[5]; //declare the Item store, the rest of the following 5 lines give the values of the store indices a name and price for the specific item
         store[0] = new Item("Bananas",1.5);
         store[1] = new Item("Oranges",2.0);
         store[2] = new Item("Frosted Flakes",6.0);
