@@ -20,7 +20,7 @@ public class Main {
         return store; //return the Item to the other methods
     }
     public static ArrayList<Item> createCart(String[] args,Item[] store) { //create the cart, an array list that can referenced in the other methods, taking in args and the store Item
-        ArrayList<Item> Cart = new ArrayList<Item>(); //declare the cart to be used through the input of this method
+        ArrayList<Item> Cart = new ArrayList<>(); //declare the cart to be used through the input of this method
         for (String arg : args) { //iterates over the indices of args
             try {
                 Cart.add(store[Integer.parseInt(arg)]); //add the store item using the integer value from the args index at "i" to the cart
