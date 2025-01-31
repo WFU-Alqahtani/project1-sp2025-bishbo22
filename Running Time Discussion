@@ -1,0 +1,15 @@
+Out of all the Big-Oh running times you have seen so far, what do you think are the running times for:
+
+(a) printReceiptInOrder:
+Because the constants (print statements and basic math), the for loops are the only parts of the
+method that provide significant Big-Oh running times (O(N) for each for loop). The N value is the
+length of the cart which can change depending on how many items you have. When added together and
+constants ignored, the highest order Big-Oh running time is just O(cart.size()). This is linear
+change the cart everytime this code is run because there are no nested loops or anything like that in
+this method.
+_______________________________________________________________________________________________________
+(b) emptyCartReverseOrder:
+Very similarly to the previous explanation, this method is linear (O(N) or O(cart.size()). There are
+simple Big-Oh constants from print statements and removing parts of the array list, so the only Big-Oh
+running time that will be considered is the for loop (O(N)). This changes the contents of the cart in
+a linear trend due to this running time.
